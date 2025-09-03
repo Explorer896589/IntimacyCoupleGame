@@ -121,7 +121,7 @@ const sex = [
 function rollImage(imgElement, imagesArray, duration) {
     let interval = setInterval(() => {
         imgElement.src = imagesArray[Math.floor(Math.random() * imagesArray.length)];
-    }, 100); // change every 100ms
+    }, 30); // change every 100ms
 
     // stop after given duration
     setTimeout(() => {
