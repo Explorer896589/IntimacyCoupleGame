@@ -109,11 +109,30 @@ const sex = [
 ]
 
 
-Button.onclick = function(){
-    random1 = Math.floor(Math.random() * props.length);
-    random2 = Math.floor(Math.random() * position.length);
-    random3 = Math.floor(Math.random() * sex.length); 
-    Img1.src = props[random1];
-    Img2.src = position[random2];
-    Img3.src = sex[random2];
+// Button.onclick = function(){
+//     random1 = Math.floor(Math.random() * props.length);
+//     random2 = Math.floor(Math.random() * position.length);
+//     random3 = Math.floor(Math.random() * sex.length); 
+//     Img1.src = props[random1];
+//     Img2.src = position[random2];
+//     Img3.src = sex[random2];
+// }
+
+function rollImage(imgElement, imagesArray, duration) {
+    let interval = setInterval(() => {
+        imgElement.src = imagesArray[Math.floor(Math.random() * imagesArray.length)];
+    }, 10); // change every 100ms
+
+    // stop after given duration
+    setTimeout(() => {
+        clearInterval(interval);
+        imgElement.src = imagesArray[Math.floor(Math.random() * imagesArray.length)];
+    }, duration);
 }
+
+Button.onclick = function() {
+    // roll each slot with a delay like jackpot
+    rollImage(Img1, props, 4000);      // stops after 2s
+    rollImage(Img2, position, 6000);   // stops after 3s
+    rollImage(Img3, sex, 8000);        // stops after 4s
+};
